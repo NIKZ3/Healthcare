@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -28,6 +29,16 @@ public class doclist extends AppCompatActivity {
     FirebaseFirestore db;
     private CollectionReference mref;
     Intent intent;
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if(keyCode == KeyEvent.KEYCODE_BACK)
+        {
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +69,9 @@ public class doclist extends AppCompatActivity {
                                 document.get("xp").toString(),
                                 document.get("name").toString(),document.get("rating").toString(),
                                 (Long)document.get("consultationfees"),
-                                document.get("timing").toString(),document.get("uid").toString()
+                                document.get("timing").toString(),document.get("uid").toString(),
+                                document.get("Latitude").toString(),document.get("Longitude").toString(),
+                                document.get("address").toString()
                         ));
 
                     }
@@ -74,6 +87,9 @@ public class doclist extends AppCompatActivity {
                             //We put uid of doctor in intent so that it is easier to extract doctor info
                             Intent intent = new Intent(doclist.this,docdetail.class);
                             intent.putExtra("uid",doc_list.get(position).getUid());
+                            intent.putExtra("latitude",doc_list.get(position).getLatitude());
+                            intent.putExtra("longitude",doc_list.get(position).getLongitude());
+                            intent.putExtra("address",doc_list.get(position).getAddress());
                             startActivity(intent);
 
 

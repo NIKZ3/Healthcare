@@ -4,11 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.drm.DrmStore;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,8 +40,19 @@ public class docdetail extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     Intent intent,intent1;
     String id,doc_id,doctoruid;//id is patient document doc_id is doctor document id
-    String doc_name,doc_loc,doc_type,doc_xp,doc_fees,doc_rating;
+    String doc_name,doc_loc,doc_type,doc_xp,doc_fees,doc_rating,latitude,longitude;
     TextView t_name,t_location,t_type,t_xp,t_fees,t_rating;
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if(keyCode == KeyEvent.KEYCODE_BACK)
+        {
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
 
     public void bookappointment(View view)
 
@@ -180,6 +194,26 @@ public class docdetail extends AppCompatActivity {
 
     }
 
+    public void showaddress(View view)
+    {
+        String address = intent.getStringExtra("address");
+        Intent address_intent = new Intent(docdetail.this,docaddress.class);
+        address_intent.putExtra("address",address);
+        startActivity(address_intent);
+
+    }
+
+    //Closes the address dialog
+
+
+    public void showmap(View view)
+    {
+        Intent intent3 = new Intent(docdetail.this,MapsActivity.class);
+        intent3.putExtra("latitude",latitude);
+        intent3.putExtra("longitude",longitude);
+        startActivity(intent3);
+    }
+
 
 
 
@@ -195,6 +229,8 @@ public class docdetail extends AppCompatActivity {
 
         //DoctorUID
         doctoruid    = intent.getStringExtra("uid");
+        latitude     = intent.getStringExtra("latitude");
+        longitude    = intent.getStringExtra("longitude");
 
         t_name = findViewById(R.id.docname);
         t_fees = findViewById(R.id.docfees);
@@ -218,6 +254,7 @@ public class docdetail extends AppCompatActivity {
                         t_xp.setText(document.get("xp").toString() + " + years");
                         t_type.setText(document.get("Type").toString());
                         t_rating.setText(document.get("rating").toString());
+
 
                     }
 

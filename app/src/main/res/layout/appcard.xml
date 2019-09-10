@@ -47,6 +47,14 @@
                 android:layout_weight="2"
                 android:paddingBottom="15dp"
                 android:text="Description" />
+            <TextView
+                android:id="@+id/appstatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingBottom="15dp"
+                android:textStyle="bold"
+                android:text="Status" />
 
             <LinearLayout
                 android:layout_width="match_parent"

@@ -10,6 +10,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -57,6 +58,16 @@ public class patientinitial extends AppCompatActivity
     CollectionReference mref;
     FirebaseAuth firebaseAuth;
     private DrawerLayout drawer;
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if(keyCode == KeyEvent.KEYCODE_BACK)
+        {
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 
     public void sendnotification(String status,String docname)
     {
@@ -296,9 +307,14 @@ public class patientinitial extends AppCompatActivity
             Intent intent = new Intent(patientinitial.this,myappointment.class);
             startActivity(intent);
 
-        }/* else if (id == R.id.nav_gallery) {
+        }
+        /* else if (id == R.id.nav_gallery) {
 
-        } else if (id == R.id.nav_slideshow) {
+
+
+        }*/
+
+     /*   } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_tools) {
 

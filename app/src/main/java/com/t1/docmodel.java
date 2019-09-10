@@ -1,14 +1,14 @@
 package com.t1;
 
-import androidx.recyclerview.widget.RecyclerView;
+
 
 public class docmodel {
 
-    private String image,patientxp,Name,Reveiw,timing,uid;
+    private String image,patientxp,Name,Reveiw,timing,uid,latitude,longitude,address;
     private Long consultationfees;
 
     public docmodel(String dimage,String dpatientxp,String dname,String dReveiw,Long dconsultationfees,
-                    String dtiming,String uid)
+                    String dtiming,String uid,String latitude,String longitude,String address)
     {
         this.uid = uid;
         this.image = dimage;
@@ -17,9 +17,35 @@ public class docmodel {
         this.Reveiw = dReveiw;
         this.consultationfees = dconsultationfees;
         this.timing = dtiming;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.address = address;
 
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
 
     public String getUid() { return uid; }
 

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -33,6 +34,16 @@ public class myappointment extends AppCompatActivity {
     FirebaseFirestore db;
 
 
+    //Finishes activity on back key pressed
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if(keyCode == KeyEvent.KEYCODE_BACK)
+        {
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 
     public void setData()
     {
@@ -53,12 +64,14 @@ public class myappointment extends AppCompatActivity {
                 {
                     for (QueryDocumentSnapshot document:task.getResult())
                     {
-
-
-                        Modelappointment m1 = new Modelappointment(document.get("docname").toString(),
-                                document.get("Timing").toString(),document.getId().toString(),
-                                document.get("doctoruid").toString(),document.get("doctordocument").toString());
-                        appointment.add(m1);
+                        //Document goes into adapter only if it is incomplete and not cancelled
+                        if(document.get("completed").equals("false") && !document.get("status").equals("cancel")) {
+                            Modelappointment m1 = new Modelappointment(document.get("docname").toString(),
+                                    document.get("Timing").toString(), document.getId().toString(),
+                                    document.get("doctoruid").toString(), document.get("doctordocument").toString(),
+                                    document.get("status").toString());
+                            appointment.add(m1);
+                        }
                     }
 
                     appointmentadapter ap = new appointmentadapter(myappointment.this,appointment);

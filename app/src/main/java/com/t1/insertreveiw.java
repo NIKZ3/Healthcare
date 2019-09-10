@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -33,6 +34,16 @@ public class insertreveiw extends AppCompatActivity {
 
     //I need to get initial rating score of doctor add the given score and tdoctor rating divide by 2 and
     //update the new rating that way we keep average intact
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if(keyCode == KeyEvent.KEYCODE_BACK)
+        {
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 
 
     public void setrating()

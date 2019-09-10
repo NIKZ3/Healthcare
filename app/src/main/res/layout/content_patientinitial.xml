@@ -40,7 +40,7 @@
             android:onClick="child"
             android:padding="0dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/w"
+            android:src="@drawable/child"
             android:text="Gyanaecologist"
             app:layout_columnWeight="1"
             app:layout_gravity='fill'
@@ -52,7 +52,7 @@
             android:onClick="skin"
             android:padding="0dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/w"
+            android:src="@drawable/skin"
             android:text="Methologist"
             app:layout_columnWeight="1"
             app:layout_gravity='fill'
@@ -65,7 +65,7 @@
             android:onClick="dental"
             android:padding="0dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/w"
+            android:src="@drawable/dental"
             app:layout_columnWeight="1"
             app:layout_gravity='fill'
 

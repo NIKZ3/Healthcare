@@ -146,6 +146,22 @@
                 android:paddingLeft="20dp"
                 android:text="PUNE"
                 android:textStyle="bold" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/buttonstyle"
+                android:onClick="showmap"
+                android:text="MAP" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/buttonstyle"
+                android:onClick="showaddress"
+                android:text="ADDRESS" />
+
         </LinearLayout>
         <LinearLayout
             android:layout_marginTop="25dp"

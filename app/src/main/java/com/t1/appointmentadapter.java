@@ -31,7 +31,7 @@ public class appointmentadapter extends RecyclerView.Adapter<appointmentadapter.
 
     private Context mcontext;
     private ArrayList<Modelappointment> mlist;
-    String doctor_uid,doctor_document;
+    String doctor_uid,doctor_document,status;
     FirebaseFirestore db;
     DocumentReference dref1,dref2; //dref1 for patient dref2 for doctor
     FirebaseAuth mAuth;
@@ -61,80 +61,88 @@ public class appointmentadapter extends RecyclerView.Adapter<appointmentadapter.
 
         TextView name1 = holder.item_name;
         TextView description1 = holder.item_description;
+        TextView status1 = holder.item_status;
         Button cancel_button = holder.item_button;
 
-        name1.setText(appointment.getName());
-        description1.setText(appointment.getDescription());
 
-        cancel_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        name1.setText("NAME : " + appointment.getName());
+        description1.setText("TIMING : " + appointment.getDescription());
 
-                String id1 = appointment.getId();
-                mAuth = FirebaseAuth.getInstance();
-                FirebaseUser user1 = mAuth.getCurrentUser();
-                String userid = user1.getUid();
+        status = appointment.getStatus();
 
-                doctor_uid = appointment.getDoctoruid();
-                doctor_document = appointment.getDoctordocument();
+        if(status.equals("false"))
+        {
+            status1.setText("STATUS : NOT YET CONFIRMED");
+        }
+        else
+        {
+            status1.setText("STATUS : " + status);
+        }
+
+        if(status.equals("denied"))
+        {
+            cancel_button.setVisibility(View.INVISIBLE);
+        }
+
+        if(!(status.equals("denied"))) {
+            cancel_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    String id1 = appointment.getId();
+                    mAuth = FirebaseAuth.getInstance();
+                    FirebaseUser user1 = mAuth.getCurrentUser();
+                    String userid = user1.getUid();
+
+                    doctor_uid = appointment.getDoctoruid();
+                    doctor_document = appointment.getDoctordocument();
 
 
-                //This Map is new update data for the DAtabase
-                Map<String,Object> new_data = new HashMap<>();
+                    //This Map is new update data for the DAtabase
+                    Map<String, Object> new_data = new HashMap<>();
 
-                new_data.put("status","cancel");
-                new_data.put("completed","true");
+                    new_data.put("status", "cancel");
+                    new_data.put("completed", "true");
 
-                db = FirebaseFirestore.getInstance();
-                dref1 = db.collection("patients").document(userid)
-                        .collection("appointment").document(id1);
+                    db = FirebaseFirestore.getInstance();
+                    dref1 = db.collection("patients").document(userid)
+                            .collection("appointment").document(id1);
 
 
-                dref1.update(new_data).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
+                    dref1.update(new_data).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
 
-                        if(task.isSuccessful())
-                        {
-                            Log.d("APpointment Cancel Status","Sucessful");
+                            if (task.isSuccessful()) {
+                                Log.d("APpointment Cancel Status", "Sucessful");
+                            } else {
+                                Log.d("APpointment Cancel Status", "UNsucessful");
+                            }
+
+
                         }
+                    });
 
-                        else
-                        {
-                            Log.d("APpointment Cancel Status","UNsucessful");
+                    dref2 = db.collection("doctors").document(doctor_uid)
+                            .collection("appointment").document(doctor_document);
+
+                    dref2.update(new_data).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+
+                            if (task.isSuccessful()) {
+                                Log.d("APpointment Cancel Status", "Sucessful");
+                            } else {
+                                Log.d("APpointment Cancel Status", "UNsucessful");
+                            }
+
                         }
+                    });
 
 
-                    }
-                });
-
-                dref2 = db.collection("doctors").document(doctor_uid)
-                        .collection("appointment").document(doctor_document);
-
-                dref2.update(new_data).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-
-                        if(task.isSuccessful())
-                        {
-                            Log.d("APpointment Cancel Status","Sucessful");
-                        }
-
-                        else
-                        {
-                            Log.d("APpointment Cancel Status","UNsucessful");
-                        }
-
-                    }
-                });
-
-
-
-
-
-
-            }
-        });
+                }
+            });
+        }
 
 
     }
@@ -148,7 +156,7 @@ public class appointmentadapter extends RecyclerView.Adapter<appointmentadapter.
 
 
 
-        TextView  item_name,item_description;
+        TextView  item_name,item_description,item_status;
         Button item_button;
 
         public ViewHolder(@NonNull View itemView) {
@@ -158,6 +166,7 @@ public class appointmentadapter extends RecyclerView.Adapter<appointmentadapter.
             item_button = itemView.findViewById(R.id.cancel_button);
             item_name = itemView.findViewById(R.id.appname);
             item_description = itemView.findViewById(R.id.appdesc);
+            item_status = itemView.findViewById(R.id.appstatus);
         }
     }
 }
