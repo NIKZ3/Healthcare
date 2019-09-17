@@ -7,6 +7,8 @@
          location permissions for the 'MyLocation' functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-feature android:name="android.hardware.camera"
+        android:required="true" />
 
     <application
         android:name=".App"
@@ -16,7 +18,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".docaddress"></activity>
+        <activity android:name=".doclogin"></activity>
+        <activity android:name=".docgetdetails" />
+        <activity
+            android:name=".dochome"
+            android:label="@string/title_activity_dochome"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".d_activity" />
+        <activity android:name=".doc_register" />
+        <activity android:name=".docaddress" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

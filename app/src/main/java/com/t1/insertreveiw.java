@@ -110,7 +110,7 @@ public class insertreveiw extends AppCompatActivity {
                 {
                     DocumentSnapshot document = task.getResult();
                     int rating = Integer.parseInt(document.get("rating").toString());
-                    if(rating==6)
+                    if(rating==0)
                     {
                         setrating();
                         Log.d("IN 6 rating","6");

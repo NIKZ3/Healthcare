@@ -32,6 +32,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void b_doctor(View view)
+    {
+        Intent intent = new Intent(getApplicationContext(),d_activity.class);
+        startActivity(intent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

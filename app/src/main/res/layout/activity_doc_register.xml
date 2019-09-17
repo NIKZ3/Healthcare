@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ConstraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".pregister_activity">
+
+
+    <ScrollView
+        android:layout_width="395dp"
+        android:layout_height="715dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/dname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="NAME" />
+
+            <EditText
+                android:id="@+id/demail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="EMAILID"
+                tools:layout_editor_absoluteX="98dp"
+                tools:layout_editor_absoluteY="95dp" />
+
+            <EditText
+                android:id="@+id/dpassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="password"
+                tools:layout_editor_absoluteX="98dp"
+                tools:layout_editor_absoluteY="183dp" />
+
+            <EditText
+                android:id="@+id/dtype"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Specialty"
+                tools:layout_editor_absoluteX="98dp"
+                tools:layout_editor_absoluteY="280dp" />
+
+            <EditText
+                android:id="@+id/dlocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Location"
+                tools:layout_editor_absoluteX="98dp"
+                tools:layout_editor_absoluteY="390dp" />
+
+            <EditText
+                android:id="@+id/daddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="address"
+                tools:layout_editor_absoluteX="98dp"
+                tools:layout_editor_absoluteY="498dp" />
+
+            <EditText
+                android:id="@+id/dxp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Experience"
+                tools:layout_editor_absoluteX="98dp"
+                tools:layout_editor_absoluteY="581dp" />
+
+            <EditText
+                android:id="@+id/dfees"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="FEES"
+                tools:layout_editor_absoluteX="98dp"
+                tools:layout_editor_absoluteY="659dp" />
+            <EditText
+                android:id="@+id/dTiming"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Timing INFO"
+                tools:layout_editor_absoluteX="98dp"
+                tools:layout_editor_absoluteY="659dp" />
+
+            <Button
+                android:id="@+id/dregister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="dregister"
+                android:text="Register"
+                tools:layout_editor_absoluteX="161dp"
+                tools:layout_editor_absoluteY="715dp" />
+
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
