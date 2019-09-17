@@ -83,6 +83,10 @@ public class docgetdetails extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(Void aVoid) {
                                         Log.d("IMAGE UPDATE STATUS:","SUCCEESSS");
+                                        Intent intent1 = new Intent(docgetdetails.this,getdoclocation.class);
+                                        intent1.putExtra("uid",uid);
+                                        startActivity(intent1);
+                                        finish();
                                     }
                                 });
 

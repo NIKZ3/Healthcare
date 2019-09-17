@@ -81,7 +81,7 @@ public class doc_register extends AppCompatActivity {
 
                             Map<String,Object> data_user = new HashMap<>();
                             data_user.put("name",user_name);
-                            data_user.put("UID",user_uid);
+                            data_user.put("uid",user_uid);
                             data_user.put("Type",speciality);
                             data_user.put("Location",location);
                             data_user.put("consultationfees",fees);
