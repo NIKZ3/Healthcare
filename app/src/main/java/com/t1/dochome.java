@@ -110,10 +110,7 @@ public class dochome extends AppCompatActivity
                         doc_rating.setText(document.get("rating").toString());
                         image_url=document.get("imageurl").toString();
                         StorageReference storageReference  = storage.getReference().child(image_url).child("images/doc_pic");
-                        //Glide.with(getApplicationContext())
-                               // .using(new FirebaseImageLoader())
-                          //      .load(storageReference)
-                            //    .into(doc_pic);
+                        Glide.with(getApplicationContext()).load(image_url).into(doc_pic);
 
                     }
 
