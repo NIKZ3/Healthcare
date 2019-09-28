@@ -1,18 +1,39 @@
 package com.t1;
 
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
+import com.bumptech.glide.Glide;
+//import com.firebase.ui.storage.images.FirebaseImageLoader;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.auth.User;
+import com.google.firebase.firestore.model.Document;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -20,14 +41,110 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class dochome extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private CollectionReference mref;
+    FirebaseAuth firebaseAuth;
+    FirebaseFirestore db;
+    Intent intent;
+
+    TextView doc_name,doc_type,doc_rating,doc_xp;
+    TextView doc_fees;
+    ImageView doc_pic;
+    String name,type,rating,xp,image_url,doctoruid,latitude,longitude;
+    Long fees;
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if(keyCode == KeyEvent.KEYCODE_BACK)
+        {
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+
+    public void getdetails()
+    {
+        final FirebaseStorage storage = FirebaseStorage.getInstance();
+        db = FirebaseFirestore.getInstance();
+        mref =  db.collection("doctors");
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        FirebaseUser user1=firebaseAuth.getCurrentUser();
+        doctoruid=user1.getUid();
+
+
+        doc_name=(TextView)findViewById(R.id.docname);
+        doc_type=(TextView)findViewById(R.id.doctype);
+        doc_xp=(TextView)findViewById(R.id.docxp);
+        doc_fees=(TextView)findViewById(R.id.docfees);
+        doc_rating=(TextView)findViewById(R.id.docrating);
+        doc_pic=(ImageView)findViewById(R.id.img);
+
+
+
+        mref.document(doctoruid).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful())
+                {
+
+                    DocumentSnapshot document  = task.getResult();
+                    if(document.exists())
+                    {
+                        doc_name.setText(document.get("name").toString());
+                        doc_fees.setText(document.get("consultationfees").toString());
+                        doc_xp.setText(document.get("xp").toString());
+                        doc_type.setText(document.get("Type").toString());
+                        doc_rating.setText(document.get("rating").toString());
+                        image_url=document.get("imageurl").toString();
+                        StorageReference storageReference  = storage.getReference().child(image_url).child("images/doc_pic");
+                        //Glide.with(getApplicationContext())
+                               // .using(new FirebaseImageLoader())
+                          //      .load(storageReference)
+                            //    .into(doc_pic);
+
+                    }
+
+
+                }
+                else
+                {
+                    Log.i("Error","Document not present");
+                }
+            }
+        });
+
+
+    }
+
+    public void check_appointment(View view)
+    {
+        Intent intent1 = new Intent(dochome.this,app_list.class);
+        startActivity(intent1);
+    }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dochome);
+
+
+        getdetails();
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);

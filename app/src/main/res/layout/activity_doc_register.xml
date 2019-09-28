@@ -9,23 +9,18 @@
 
 
     <ScrollView
-        android:layout_width="395dp"
-        android:layout_height="715dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="40dp"
+        android:fillViewport="true">
 
-        <LinearLayout
+
+    <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
 
             <EditText
                 android:id="@+id/dname"
@@ -55,15 +50,6 @@
                 tools:layout_editor_absoluteX="98dp"
                 tools:layout_editor_absoluteY="183dp" />
 
-            <EditText
-                android:id="@+id/dtype"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:hint="Specialty"
-                tools:layout_editor_absoluteX="98dp"
-                tools:layout_editor_absoluteY="280dp" />
 
             <EditText
                 android:id="@+id/dlocation"
@@ -73,7 +59,7 @@
                 android:inputType="textPersonName"
                 android:hint="Location"
                 tools:layout_editor_absoluteX="98dp"
-                tools:layout_editor_absoluteY="390dp" />
+                tools:layout_editor_absoluteY="581dp" />
 
             <EditText
                 android:id="@+id/daddress"
@@ -81,9 +67,54 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:hint="address"
+                android:hint="Address"
                 tools:layout_editor_absoluteX="98dp"
-                tools:layout_editor_absoluteY="498dp" />
+                tools:layout_editor_absoluteY="581dp" />
+
+            <TextView
+                android:id="@+id/special"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:text="Speciality" />
+
+            <RadioGroup
+                android:layout_marginTop="50dp"
+                android:id="@+id/groupradio"
+                android:layout_marginLeft="10dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <!-- In RadioGroup create the 1 Radio Button-->
+                <!-- like this we will add some more Radio Button-->
+                <RadioButton
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radio_id1"
+                    android:text="Gynaecologist"
+                    android:textSize="20dp"/>
+
+                <RadioButton
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radio_id2"
+                    android:text="Dermatologist"
+                    android:textSize="20dp"/>
+
+                <RadioButton
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radio_id3"
+                    android:text="Pediatrician"
+                    android:textSize="20dp"/>
+
+                <RadioButton
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radio_id4"
+                    android:text="Dentist"
+                    android:textSize="20dp"/>
+            </RadioGroup>
 
             <EditText
                 android:id="@+id/dxp"
@@ -104,15 +135,33 @@
                 android:hint="FEES"
                 tools:layout_editor_absoluteX="98dp"
                 tools:layout_editor_absoluteY="659dp" />
+
             <EditText
-                android:id="@+id/dTiming"
+                android:id="@+id/ddays"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:hint="Timing INFO"
+                android:hint="Working Days"
                 tools:layout_editor_absoluteX="98dp"
                 tools:layout_editor_absoluteY="659dp" />
+
+
+            <EditText
+                android:id="@+id/dstartTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Start Time"
+                android:ems="10"
+                android:inputType="time" />
+
+            <EditText
+                android:id="@+id/dendTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="End Time"
+                android:ems="10"
+                android:inputType="time" />
 
             <Button
                 android:id="@+id/dregister"

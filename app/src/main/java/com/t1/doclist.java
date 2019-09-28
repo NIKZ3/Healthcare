@@ -2,6 +2,7 @@ package com.t1;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,6 +13,7 @@ import android.view.KeyEvent;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.api.Distribution;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
@@ -69,7 +71,7 @@ public class doclist extends AppCompatActivity {
                                 document.get("xp").toString(),
                                 document.get("name").toString(),document.get("rating").toString(),
                                 (Long)document.get("consultationfees"),
-                                document.get("timing").toString(),document.get("uid").toString(),
+                                document.get("startTime").toString(),document.get("endTime").toString(),document.get("uid").toString(),
                                 document.get("Latitude").toString(),document.get("Longitude").toString(),
                                 document.get("address").toString()
                         ));

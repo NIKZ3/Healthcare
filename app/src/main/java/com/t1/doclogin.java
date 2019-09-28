@@ -41,6 +41,7 @@ public class doclogin extends AppCompatActivity {
 
                         if(task.isSuccessful()) {
                             Log.d("LOGIN", "signInWithEmail:success");
+                            Toast.makeText(doclogin.this,"Login Successful",Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(doclogin.this,dochome.class);
                             startActivity(intent);
                             finish();

@@ -20,7 +20,7 @@
             android:layout_height="match_parent"
             android:layout_marginRight="40dp"
             android:layout_marginLeft="40dp"
-            android:layout_marginBottom="430dp">
+            android:layout_marginBottom="300dp">
 
             <TextView
                 android:id="@+id/textView2"
@@ -72,20 +72,15 @@
         </RelativeLayout>
 
 
-
-
-
-
         <EditText
             android:id="@+id/reveiwcontent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:layout_marginTop="200dp"
             android:layout_marginLeft="30dp"
+            android:layout_marginTop="280dp"
+            android:ems="10"
             android:hint="Enter Your Review"
-            />
+            android:inputType="textPersonName" />
 
         <Button
             android:layout_width="wrap_content"

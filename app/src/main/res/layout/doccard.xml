@@ -59,11 +59,18 @@
                 android:text="Rs 500" />
 
             <TextView
-                android:id="@+id/doctiming"
+                android:id="@+id/docstarttiming"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:text="Timing" />
+                android:text="StartTiming" />
+
+            <TextView
+                android:id="@+id/docendtiming"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="EndTiming" />
 
 
         </LinearLayout>

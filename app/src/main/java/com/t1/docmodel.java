@@ -4,11 +4,11 @@ package com.t1;
 
 public class docmodel {
 
-    private String image,patientxp,Name,Reveiw,timing,uid,latitude,longitude,address;
+    private String image,patientxp,Name,Reveiw,startTime,endTime,uid,latitude,longitude,address;
     private Long consultationfees;
 
     public docmodel(String dimage,String dpatientxp,String dname,String dReveiw,Long dconsultationfees,
-                    String dtiming,String uid,String latitude,String longitude,String address)
+                    String dstartTime,String dendTime ,String uid,String latitude,String longitude,String address)
     {
         this.uid = uid;
         this.image = dimage;
@@ -16,7 +16,8 @@ public class docmodel {
         this.Name = dname;
         this.Reveiw = dReveiw;
         this.consultationfees = dconsultationfees;
-        this.timing = dtiming;
+        this.startTime = dstartTime;
+        this.endTime=dendTime;
         this.latitude = latitude;
         this.longitude = longitude;
         this.address = address;
@@ -49,7 +50,9 @@ public class docmodel {
 
     public String getUid() { return uid; }
 
-    public String getTiming() {return timing; }
+    public String getstartTiming() {return startTime; }
+
+    public String getendTiming() {return endTime; }
 
     public String getImage() {
         return image;
@@ -70,7 +73,8 @@ public class docmodel {
 
     public void setUid(String uid) { this.uid = uid; }
 
-    public void setTiming(String timing){ this.timing = timing;}
+    public void setstartTiming(String starttiming){ this.startTime = starttiming;}
+    public void setendTiming(String endtiming){ this.endTime = endtiming;}
 
     public void setPatientxp(String patientxp) {
         this.patientxp = patientxp;

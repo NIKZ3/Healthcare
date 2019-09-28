@@ -39,7 +39,7 @@ public class docdetail extends AppCompatActivity {
     private CollectionReference mref,mref1;
     FirebaseAuth firebaseAuth;
     Intent intent,intent1;
-    String id,doc_id,doctoruid;//id is patient document doc_id is doctor document id
+    String id,doc_id,doctoruid,pname;//id is patient document doc_id is doctor document id
     String doc_name,doc_loc,doc_type,doc_xp,doc_fees,doc_rating,latitude,longitude;
     TextView t_name,t_location,t_type,t_xp,t_fees,t_rating;
 
@@ -61,53 +61,77 @@ public class docdetail extends AppCompatActivity {
         //Populate appoinmnet of patient side with doctor name
 
         //Here Ftech for patient uid from firebase auth and send in the request
-        String useruid      = firebaseAuth.getCurrentUser().getUid();
+        final String useruid      = firebaseAuth.getCurrentUser().getUid();
 
         //Creating Document in patient side database and storing it in both doctor and patient side
         //On patient side it is used for notifactions and doctor side it is for updation
         mref1 = db.collection("patients");
 
         DocumentReference dref = mref1.document(useruid).collection("appointment").document();
-        DocumentReference dref1 = db.collection("doctors").document(doctoruid)
+        final DocumentReference dref1 = db.collection("doctors").document(doctoruid)
                 .collection("appointment").document();
 
         id = dref.getId();
         doc_id = dref1.getId();
 
+        mref1.document(useruid).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
 
-        Map<String,String> appointmentData = new HashMap<>();
-        appointmentData.put("patientuid",useruid);
+                       pname=document.getString("Name");
+                        Log.i("LOGGER", pname);
 
-        //Status implies if appointment is accepted by doctor
+                        Map<String,String> appointmentData = new HashMap<>();
 
-        appointmentData.put("status","false");
+                        appointmentData.put("patientuid",useruid);
+                        appointmentData.put("patientname",pname);
+                        //Status implies if appointment is accepted by doctor
 
-        //completed tells if appointment is completed or yet to be completed
+                        appointmentData.put("status","false");
 
-        appointmentData.put("completed","false");
+                        //completed tells if appointment is completed or yet to be completed
 
-        appointmentData.put("Timing","Specifed by doctor");
+                        appointmentData.put("completed","false");
 
-        appointmentData.put("docref",id);
+                        appointmentData.put("Timing","Specifed by doctor");
+
+                        appointmentData.put("docref",id);
+
+                        dref1.set(appointmentData)
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+
+                                        if(task.isSuccessful())
+                                        {
+                                            Log.d("Status","Success");
+                                            Toast.makeText(docdetail.this,"Appointment booked Successfully",Toast.LENGTH_LONG).show();
+                                        }
+                                        else
+                                        {
+                                            Log.d("Status","failed");
+                                        }
 
 
-        dref1.set(appointmentData)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-
-                        if(task.isSuccessful())
-                        {
-                            Log.d("Status","Success");
-                        }
-                        else
-                        {
-                            Log.d("Status","failed");
-                        }
-
-
+                                    }
+                                });
+                    } else {
+                        Log.d("LOGGER", "No such document");
                     }
-                });
+                } else {
+                    Log.d("LOGGER", "No such document");
+                }
+            }
+        });
+
+
+
+
+
+
 
         /*mref.document(doctoruid).collection("appointment").document().set(appointmentData)
                  .addOnCompleteListener(new OnCompleteListener<Void>() {

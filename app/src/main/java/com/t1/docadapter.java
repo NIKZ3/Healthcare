@@ -61,7 +61,8 @@ public class docadapter extends RecyclerView.Adapter<docadapter.ViewHolder> {
         TextView name1 = holder.name;
         TextView patientxp1 = holder.patientxp;
         TextView review1 = holder.review;
-        TextView timing1 = holder.timing;
+        TextView starttiming1 = holder.starttiming;
+        TextView endtiming1 = holder.endtiming;
         TextView consultationfees1 = holder.consultationfees;
 
 
@@ -70,9 +71,12 @@ public class docadapter extends RecyclerView.Adapter<docadapter.ViewHolder> {
             review1.setText("RATING:" + docitem.getReveiw());
             patientxp1.setText("Experience: " + docitem.getPatientxp());
 
-            String cfees = "FEES: "+String.valueOf(docitem.getConsultationfees());
+            String cfees = "FEES: "+"Rs."+String.valueOf(docitem.getConsultationfees());
             consultationfees1.setText(cfees);
-            timing1.setText(docitem.getTiming());
+            String start="Start Time: "+ String.valueOf(docitem.getstartTiming());
+            starttiming1.setText(start);
+        String end="Closing Time: "+ String.valueOf(docitem.getendTiming());
+            endtiming1.setText(end);
 
             Glide.with(mcontext).load(docitem.getImage()).into(imageView1);
 
@@ -90,7 +94,7 @@ public class docadapter extends RecyclerView.Adapter<docadapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         ImageView imageView;
-        TextView name,patientxp,review,timing,consultationfees;
+        TextView name,patientxp,review,starttiming,endtiming,consultationfees;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -99,7 +103,8 @@ public class docadapter extends RecyclerView.Adapter<docadapter.ViewHolder> {
             name = itemView.findViewById(R.id.docname);
             patientxp = itemView.findViewById(R.id.docpatientxp);
             review = itemView.findViewById(R.id.docreview);
-            timing = itemView.findViewById(R.id.doctiming);
+            starttiming = itemView.findViewById(R.id.docstarttiming);
+            endtiming = itemView.findViewById(R.id.docendtiming);
             consultationfees = itemView.findViewById(R.id.docconsultationfees);
 
             itemView.setOnClickListener(new View.OnClickListener() {

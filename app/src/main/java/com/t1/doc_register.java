@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,8 +31,10 @@ public class doc_register extends AppCompatActivity {
     private CollectionReference mref;
     private FirebaseAuth mAuth;
 
-    TextView emailid,name,password,d_location,d_address,d_fees,d_timing,d_speciality,d_experience;
-    String user_name,email,pass,location,address,timing,speciality,experience;
+    TextView emailid,name,password,d_location,d_address,d_fees,d_start,d_end,d_speciality,d_experience;
+    String user_name,email,pass,location,address,start_time,end_time,speciality,experience;
+    RadioGroup radioGroup;
+    RadioButton radioButton;
     Long fees;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -48,8 +52,9 @@ public class doc_register extends AppCompatActivity {
         d_address = (TextView) findViewById(R.id.daddress);
         d_experience = (TextView) findViewById(R.id.dxp);
         d_fees = (TextView) findViewById(R.id.dfees);
-        d_speciality = (TextView) findViewById(R.id.dtype);
-        d_timing = (TextView) findViewById(R.id.dTiming);
+        radioGroup=(RadioGroup)findViewById(R.id.groupradio);
+        d_start = (TextView) findViewById(R.id.dstartTime);
+        d_end = (TextView) findViewById(R.id.dendTime);
         password = (EditText) findViewById(R.id.dpassword);
 
         mref=db.collection("doctors");
@@ -60,10 +65,30 @@ public class doc_register extends AppCompatActivity {
         user_name = name.getText().toString();
         location =  d_location.getText().toString();
         address =   d_address.getText().toString();
+        int selectedId = radioGroup.getCheckedRadioButtonId();
+        radioButton = (RadioButton) findViewById(selectedId);
+        //speciality=radioButton.getText().toString();
+        if(selectedId==R.id.radio_id1)
+        {
+            speciality="gyno";
+        }
+        else if(selectedId==R.id.radio_id2)
+        {
+            speciality="skin";
+        }
+        else if(selectedId==R.id.radio_id3)
+        {
+            speciality="child";
+        }
+        else if(selectedId==R.id.radio_id4)
+        {
+            speciality="dental";
+        }
 
         fees =  Long.valueOf(d_fees.getText().toString());
-        timing =  d_timing.getText().toString();
-        speciality = d_speciality.getText().toString();
+        start_time =  d_start.getText().toString();
+        end_time =  d_end.getText().toString();
+
         experience =  d_experience.getText().toString();
 
 
@@ -86,7 +111,8 @@ public class doc_register extends AppCompatActivity {
                             data_user.put("Location",location);
                             data_user.put("consultationfees",fees);
                             data_user.put("address",address);
-                            data_user.put("timing",timing);
+                            data_user.put("startTime",start_time);
+                            data_user.put("endTime",end_time);
                             data_user.put("xp",experience);
                             data_user.put("Longitude","18.5204");
                             data_user.put("Latitude","73.8567");

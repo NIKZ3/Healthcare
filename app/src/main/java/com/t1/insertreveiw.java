@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -58,7 +59,7 @@ public class insertreveiw extends AppCompatActivity {
                         if(task.isSuccessful())
                         {
                             Log.d("Score Insert","SUccesss");
-
+                            Toast.makeText(insertreveiw.this,"Review given Successfully",Toast.LENGTH_LONG).show();
                         }
 
 
