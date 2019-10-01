@@ -18,75 +18,75 @@
     >
 
     <LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal">
+
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/appname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingBottom="15dp"
+        android:text="NAME" />
+
+
+
+
+    <TextView
+        android:id="@+id/appdesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:paddingBottom="15dp"
+        android:text="Description" />
+    <TextView
+        android:id="@+id/appstatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:paddingBottom="15dp"
+        android:textStyle="bold"
+        android:text="Status" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="horizontal">
 
 
-        <LinearLayout
+        <Button
             android:layout_width="wrap_content"
+            android:id="@+id/cancel_button"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/buttonstyle"
+            android:onClick="cancelAppointment"
+            android:text="Cancel Appointment"
+            android:textColor="#ffff"
 
-            <TextView
-                android:id="@+id/appname"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingBottom="15dp"
-                android:text="NAME" />
-
-
-
-
-            <TextView
-                android:id="@+id/appdesc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:paddingBottom="15dp"
-                android:text="Description" />
-            <TextView
-                android:id="@+id/appstatus"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:paddingBottom="15dp"
-                android:textStyle="bold"
-                android:text="Status" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:id="@+id/cancel_button"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="30dp"
-                    android:background="@drawable/buttonstyle"
-                    android:onClick="cancelAppointment"
-                    android:text="Cancel Appointment"
-                    android:textColor="#ffff"
-
-                    />
-
-
-
-            </LinearLayout>
-
-
-
-
-        </LinearLayout>
+            />
 
 
 
     </LinearLayout>
 
 
-</androidx.cardview.widget.CardView>
+
+
+</LinearLayout>
+
+
+
+</LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
