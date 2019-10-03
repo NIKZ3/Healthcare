@@ -79,11 +79,6 @@ public class docadapter extends RecyclerView.Adapter<docadapter.ViewHolder> {
             endtiming1.setText(end);
 
             Glide.with(mcontext).load(docitem.getImage()).into(imageView1);
-
-
-
-
-
     }
 
     @Override

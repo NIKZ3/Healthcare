@@ -38,13 +38,16 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void CallAmbulance(View view)
+    {
+        Intent intent= new Intent(getApplicationContext(),Emergency.class);
+        startActivity(intent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
 
 
     }
