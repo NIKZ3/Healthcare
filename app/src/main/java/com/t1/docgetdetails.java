@@ -50,9 +50,10 @@ public class docgetdetails extends AppCompatActivity {
 
 
 
-    public void click(View view)
+
+
+    public void uploadactivity()
     {
-        dispatchTakePictureIntent();
         imageView.setDrawingCacheEnabled(true);
         imageView.buildDrawingCache();
         Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
@@ -102,6 +103,14 @@ public class docgetdetails extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void click(View view)
+    {
+
+        dispatchTakePictureIntent();
+
+
 
 
     }
@@ -118,18 +127,20 @@ public class docgetdetails extends AppCompatActivity {
     public void upload(View view)
     {
         Intent intent = new Intent();
+
 // Show only images, no videos or anything else
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
+
 // Always show the chooser (if there are multiple options available)
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
 
-        if(uri != null)
+
+       /* if(uri != null)
         {
             final ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
-
             StorageReference ref = storageRef.child("images/"+ UUID.randomUUID().toString());
             ref.putFile(uri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -142,8 +153,6 @@ public class docgetdetails extends AppCompatActivity {
                             startActivity(intent1);
                             finish();
                         }
-
-
                     })
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -160,7 +169,7 @@ public class docgetdetails extends AppCompatActivity {
                             progressDialog.setMessage("Uploaded "+(int)progress+"%");
                         }
                     });
-        }
+        }*/
 
 
     }
@@ -174,6 +183,9 @@ public class docgetdetails extends AppCompatActivity {
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             imageView.setImageBitmap(imageBitmap);
 
+            //Changes done here
+            uploadactivity();
+
         }
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
@@ -186,6 +198,9 @@ public class docgetdetails extends AppCompatActivity {
 
                 //ImageView imageView = (ImageView) findViewById(R.id.imageView);
                 imageView.setImageBitmap(bitmap);
+
+                //changes done here
+                uploadactivity();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -210,6 +225,7 @@ public class docgetdetails extends AppCompatActivity {
 
 
         imageView = findViewById(R.id.imageView2);
+
 
 
 

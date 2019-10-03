@@ -32,11 +32,22 @@
         android:hint="Enter Visit Time"/>
 
     <Button
+        android:id="@+id/button6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/buttonstyle"
+        android:onClick="confirm_time"
+        android:text="CONFIRM TIME"
+        android:textColor="#fff" />
+
+    <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="45dp"
         android:background="@drawable/buttonstyle"
         android:onClick="confirm_appointment"
         android:text="CONFIRM APPOINTMENT"
@@ -47,20 +58,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/buttonstyle"
-        android:onClick="cancel_appointment"
-        android:text="CANCEL APPOINTMENT"
+        android:onClick="decline_appointment"
+        android:text="DECLINE APPOINTMENT"
         android:textColor="#fff" />
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="80dp"
-        android:background="@drawable/buttonstyle"
-        android:onClick="cancel_appointment"
-        android:text="COMPLETED TREATMENT"
-        android:textColor="#fff" />
+
+
 </LinearLayout>

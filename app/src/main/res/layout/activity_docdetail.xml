@@ -242,6 +242,7 @@
             android:layout_marginTop="35dp"
             android:background="@drawable/buttonstyle"
             android:text="Reveiws"
+            android:onClick="showreveiws"
             android:textColor="#fff"
             android:layout_margin="10dp"
             />

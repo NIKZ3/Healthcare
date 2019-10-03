@@ -1,37 +1,34 @@
 package com.t1;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.KeyEvent;
-import android.widget.ListView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class app_list extends AppCompatActivity {
+public class patreview_list extends AppCompatActivity {
+
     FirebaseFirestore db;
     private CollectionReference mref,mref1;
     FirebaseAuth firebaseAuth;
-    ArrayList<appmodel> applist;
+    ArrayList<revmodel> revlist;
     Intent intent;
     RecyclerView recyclerView;
+    String doctoruid;
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -42,24 +39,24 @@ public class app_list extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_applist);
+        setContentView(R.layout.activity_patreview_list);
 
         intent=getIntent();
 
         db = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
         String docid = firebaseAuth.getCurrentUser().getUid();
-        mref1 = db.collection("doctors").document(docid).collection("appointment");
+        doctoruid=intent.getStringExtra("doctoruid");
+        mref1 = db.collection("doctors").document(doctoruid).collection("reveiws");
 
-        recyclerView = findViewById(R.id.rv1);
+        recyclerView = findViewById(R.id.rv3);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         RecyclerView.LayoutManager rvLiLayoutManager = layoutManager;
         recyclerView.setLayoutManager(rvLiLayoutManager);
-        applist=new ArrayList<>();
+        revlist=new ArrayList<>();
 
         mref1.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -68,39 +65,25 @@ public class app_list extends AppCompatActivity {
                 {
                     for(QueryDocumentSnapshot document : task.getResult())
                     {
-                        applist.add(new appmodel(document.get("patientname").toString(),
-                                document.get("Timing").toString(),
-                                document.get("status").toString(),
-                                document.getId().toString()
+                        revlist.add(new revmodel(document.get("score").toString(),
+                                document.get("reveiw_content").toString()
                         ));
 
 
                     }
-                    Log.d("Status","added to applist");
-                    app_adapter aadapter = new app_adapter(app_list.this,applist);
-                    recyclerView.setAdapter(aadapter);
-                    aadapter.setOnItemClickListener(new app_adapter.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(int position) {
+                    Log.d("Status","added to revlist");
+                    rev_adapter radapter = new rev_adapter(patreview_list.this,revlist);
+                    recyclerView.setAdapter(radapter);
 
-                            //We put uid of doctor in intent so that it is easier to extract doctor info
-                            Intent intent1 = new Intent(app_list.this,appdetail.class);
-                            intent1.putExtra("docid",applist.get(position).getId());
-                            startActivity(intent1);
-
-
-                        }
-                    });
-
-            }
+                }
                 else
                 {
 
                     Log.d("Status","failed");
                 }
-        }
+            }
 
-    });
+        });
+
     }
-
 }

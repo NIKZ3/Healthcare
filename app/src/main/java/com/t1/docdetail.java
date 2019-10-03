@@ -227,6 +227,15 @@ public class docdetail extends AppCompatActivity {
 
     }
 
+    public void showreveiws(View view)
+    {
+       // String doctoruid=intent.getStringExtra("doctoruid");
+      Intent review_intent= new Intent(docdetail.this,patreview_list.class);
+      review_intent.putExtra("doctoruid",doctoruid);
+        startActivity(review_intent);
+
+    }
+
     //Closes the address dialog
 
 

@@ -12,20 +12,28 @@
         layout="@layout/app_bar_dochome"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_dochome"
+        app:menu="@menu/activity_dochome_drawer" />
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/cardview_shadow_end_color"
-        android:orientation="vertical">
 
         <RelativeLayout
             android:id="@+id/relativeLayout"
             android:layout_width="match_parent"
-            android:layout_height="405dp">
+            android:layout_height="405dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -47,8 +55,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
-                    android:textColor="#fff"
                     android:text="xyz"
+                    android:textColor="#fff"
                     android:textSize="21sp"
                     android:textStyle="bold" />
 
@@ -96,8 +104,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingTop="10dp"
-                            android:textColor="@color/startBlue"
                             android:text="2 years"
+                            android:textColor="@color/startBlue"
                             android:textSize="20sp"
                             android:textStyle="bold" />
 
@@ -121,8 +129,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingTop="10dp"
-                            android:textColor="@color/startBlue"
                             android:text="500"
+                            android:textColor="@color/startBlue"
                             android:textSize="20sp"
                             android:textStyle="bold" />
 
@@ -146,8 +154,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingTop="10dp"
-                            android:textColor="@color/startBlue"
                             android:text="100"
+                            android:textColor="@color/startBlue"
                             android:textSize="20sp"
                             android:textStyle="bold" />
 
@@ -160,6 +168,7 @@
         </RelativeLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -208,14 +217,6 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_dochome"
-        app:menu="@menu/activity_dochome_drawer" />
 
 
 

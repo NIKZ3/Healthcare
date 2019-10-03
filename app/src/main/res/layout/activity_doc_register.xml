@@ -121,7 +121,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:hint="Experience"
                 tools:layout_editor_absoluteX="98dp"
                 tools:layout_editor_absoluteY="581dp" />
@@ -131,7 +131,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:hint="FEES"
                 tools:layout_editor_absoluteX="98dp"
                 tools:layout_editor_absoluteY="659dp" />

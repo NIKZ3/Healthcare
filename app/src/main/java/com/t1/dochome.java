@@ -110,10 +110,7 @@ public class dochome extends AppCompatActivity
                         doc_rating.setText(document.get("rating").toString());
                         image_url=document.get("imageurl").toString();
                         StorageReference storageReference  = storage.getReference().child(image_url).child("images/doc_pic");
-                        //Glide.with(getApplicationContext())
-                               // .using(new FirebaseImageLoader())
-                          //      .load(storageReference)
-                            //    .into(doc_pic);
+                        Glide.with(getApplicationContext()).load(image_url).into(doc_pic);
 
                     }
 
@@ -135,7 +132,11 @@ public class dochome extends AppCompatActivity
         startActivity(intent1);
     }
 
-
+    public void check_reviews(View view)
+    {
+        Intent intent2=new Intent(dochome.this,review_list.class);
+        startActivity(intent2);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -147,14 +148,8 @@ public class dochome extends AppCompatActivity
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        //FloatingActionButton fab = findViewById(R.id.fab);
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
