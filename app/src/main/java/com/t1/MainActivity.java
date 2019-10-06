@@ -38,7 +38,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
+    public void CallAmbulance(View view)
+    {
+        Intent intent= new Intent(getApplicationContext(),Emergency.class);
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

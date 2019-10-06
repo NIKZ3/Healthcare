@@ -56,6 +56,8 @@ public class dochome extends AppCompatActivity
     FirebaseAuth firebaseAuth;
     FirebaseFirestore db;
     Intent intent;
+    View header;
+    TextView username;
 
     TextView doc_name,doc_type,doc_rating,doc_xp;
     TextView doc_fees;
@@ -105,9 +107,25 @@ public class dochome extends AppCompatActivity
                     {
                         doc_name.setText(document.get("name").toString());
                         doc_fees.setText(document.get("consultationfees").toString());
-                        doc_xp.setText(document.get("xp").toString());
-                        doc_type.setText(document.get("Type").toString());
-                        doc_rating.setText(document.get("rating").toString());
+                        doc_xp.setText(document.get("xp").toString()+" years");
+                        //doc_type.setText(document.get("Type").toString());
+                        if(document.get("Type").toString().equals("gyno"))
+                        {
+                            doc_type.setText("Gynaecologist");
+                        }
+                        else if(document.get("Type").toString().equals("child"))
+                        {
+                            doc_type.setText("Pediatrician");
+                        }
+                        else if(document.get("Type").toString().equals("dental"))
+                        {
+                            doc_type.setText("Dentist");
+                        }
+                        else if(document.get("Type").toString().equals("skin"))
+                        {
+                            doc_type.setText("Dermatologist");
+                        }
+                        doc_rating.setText(document.get("rating").toString()+"/5");
                         image_url=document.get("imageurl").toString();
                         StorageReference storageReference  = storage.getReference().child(image_url).child("images/doc_pic");
                         Glide.with(getApplicationContext()).load(image_url).into(doc_pic);
@@ -146,6 +164,9 @@ public class dochome extends AppCompatActivity
 
         getdetails();
 
+        FirebaseUser user1 = firebaseAuth.getCurrentUser();
+        String id1 = user1.getUid();
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //FloatingActionButton fab = findViewById(R.id.fab);
@@ -157,6 +178,10 @@ public class dochome extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+        header = navigationView.getHeaderView(0);
+        username = (TextView) header.findViewById(R.id.username1);
+        username.setText(user1.getEmail());
     }
 
     @Override
@@ -198,16 +223,16 @@ public class dochome extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            // Handle the camera action
+
         } else if (id == R.id.nav_gallery) {
+            Intent intent3=new Intent(dochome.this,app_list.class);
+            startActivity(intent3);
 
         } else if (id == R.id.nav_slideshow) {
+            Intent intent4=new Intent(dochome.this,review_list.class);
+            startActivity(intent4);
 
         } else if (id == R.id.nav_tools) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
 
         }
 

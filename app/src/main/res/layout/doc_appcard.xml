@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/buttonstyle"
             android:layout_weight="1"
-            android:text="Button" />
+            android:text="COMPLETE TREATMENT" />
 
 
     </LinearLayout>

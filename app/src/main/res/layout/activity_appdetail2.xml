@@ -27,7 +27,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="time"
         android:layout_marginTop="50dp"
         android:hint="Enter Visit Time"/>
 

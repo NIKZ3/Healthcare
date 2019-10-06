@@ -68,11 +68,13 @@ public class app_list extends AppCompatActivity {
                 {
                     for(QueryDocumentSnapshot document : task.getResult())
                     {
-                        applist.add(new appmodel(document.get("patientname").toString(),
-                                document.get("Timing").toString(),
-                                document.get("status").toString(),
-                                document.getId().toString()
-                        ));
+                        if(!document.get("status").equals("cancel")) {
+                            applist.add(new appmodel(document.get("patientname").toString(),
+                                    document.get("Timing").toString(),
+                                    document.get("status").toString(),
+                                    document.getId().toString()
+                            ));
+                        }
 
 
                     }

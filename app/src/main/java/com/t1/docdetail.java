@@ -12,9 +12,11 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,6 +32,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.model.Document;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -40,8 +44,9 @@ public class docdetail extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     Intent intent,intent1;
     String id,doc_id,doctoruid,pname;//id is patient document doc_id is doctor document id
-    String doc_name,doc_loc,doc_type,doc_xp,doc_fees,doc_rating,latitude,longitude;
-    TextView t_name,t_location,t_type,t_xp,t_fees,t_rating;
+    String doc_name,doc_loc,doc_type,doc_xp,doc_fees,doc_rating,latitude,longitude,image_url;
+    TextView t_name,t_location,t_type,t_xp,t_fees,t_rating,t_timing;
+    ImageView t_pic;
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -259,6 +264,7 @@ public class docdetail extends AppCompatActivity {
         mref =  db.collection("doctors");
         intent = getIntent();
         firebaseAuth = FirebaseAuth.getInstance();
+        final FirebaseStorage storage = FirebaseStorage.getInstance();
 
         //DoctorUID
         doctoruid    = intent.getStringExtra("uid");
@@ -271,6 +277,8 @@ public class docdetail extends AppCompatActivity {
         t_rating = findViewById(R.id.docrating);
         t_xp = findViewById(R.id.docxp);
         t_type = findViewById(R.id.doctype);
+        t_timing=findViewById(R.id.t_timing);
+        t_pic=findViewById(R.id.docpic);
 
         mref.document(doctoruid).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -282,12 +290,30 @@ public class docdetail extends AppCompatActivity {
                     if(document.exists())
                     {
                         t_name.setText(document.get("name").toString());
-                        t_fees.setText(document.get("consultationfees").toString());
+                        t_fees.setText( "Rs "+document.get("consultationfees").toString());
                         t_location.setText(document.get("Location").toString());
-                        t_xp.setText(document.get("xp").toString() + " + years");
-                        t_type.setText(document.get("Type").toString());
-                        t_rating.setText(document.get("rating").toString());
-
+                        t_xp.setText(document.get("xp").toString() + " years");
+                        if(document.get("Type").toString().equals("gyno"))
+                        {
+                            t_type.setText("Gynaecologist");
+                        }
+                        else if(document.get("Type").toString().equals("child"))
+                        {
+                            t_type.setText("Pediatrician");
+                        }
+                        else if(document.get("Type").toString().equals("dental"))
+                        {
+                            t_type.setText("Dentist");
+                        }
+                        else if(document.get("Type").toString().equals("skin"))
+                        {
+                            t_type.setText("Dermatologist");
+                        }
+                        t_rating.setText(document.get("rating").toString()+"/5");
+                        t_timing.setText(document.get("startTime").toString()+" to "+document.get("endTime").toString());
+                        image_url=document.get("imageurl").toString();
+                        StorageReference storageReference  = storage.getReference().child(image_url).child("images/t_pic");
+                        Glide.with(getApplicationContext()).load(image_url).into(t_pic);
 
                     }
 

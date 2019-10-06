@@ -36,5 +36,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/patient" />
 
-   
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="413dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="651dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/colorAccent"
+        android:onClick="CallAmbulance"
+        android:text="EMERGENCY"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

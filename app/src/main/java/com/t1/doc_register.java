@@ -31,8 +31,8 @@ public class doc_register extends AppCompatActivity {
     private CollectionReference mref;
     private FirebaseAuth mAuth;
 
-    TextView emailid,name,password,d_location,d_address,d_fees,d_start,d_end,d_speciality,d_experience;
-    String user_name,email,pass,location,address,start_time,end_time,speciality,experience;
+    TextView emailid,name,password,d_location,d_address,d_fees,d_start,d_end,d_experience,phno,clinic_name;
+    String user_name,email,pass,location,address,start_time,end_time,speciality,experience,phone,clinic;
     RadioGroup radioGroup;
     RadioButton radioButton;
     Long fees;
@@ -56,6 +56,8 @@ public class doc_register extends AppCompatActivity {
         d_start = (TextView) findViewById(R.id.dstartTime);
         d_end = (TextView) findViewById(R.id.dendTime);
         password = (EditText) findViewById(R.id.dpassword);
+        phno=(EditText)findViewById(R.id.doc_phone);
+        clinic_name=(EditText)findViewById(R.id.clinic_name);
 
         mref=db.collection("doctors");
 
@@ -88,6 +90,9 @@ public class doc_register extends AppCompatActivity {
         fees =  Long.valueOf(d_fees.getText().toString());
         start_time =  d_start.getText().toString();
         end_time =  d_end.getText().toString();
+        phone=phno.getText().toString();
+        clinic=clinic_name.getText().toString();
+
 
         experience =  d_experience.getText().toString();
 
@@ -113,6 +118,8 @@ public class doc_register extends AppCompatActivity {
                             data_user.put("address",address);
                             data_user.put("startTime",start_time);
                             data_user.put("endTime",end_time);
+                            data_user.put("phone no",phone);
+                            data_user.put("clinicname",clinic);
                             data_user.put("xp",experience);
                             data_user.put("Longitude","18.5204");
                             data_user.put("Latitude","73.8567");
@@ -153,7 +160,7 @@ public class doc_register extends AppCompatActivity {
                         else
                         {
                             Toast.makeText(doc_register.this,"REGISTRATION FAILED",Toast.LENGTH_LONG).show();
-                            Log.d("Register","USer creation Failed");
+                            Log.d("Register","User creation Failed");
                         }
                     }
                 });
