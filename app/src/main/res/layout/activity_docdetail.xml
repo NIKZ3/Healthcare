@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="@drawable/background"
     android:layout_height="match_parent">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cardview_shadow_end_color"
+    android:background="@drawable/background"
     android:orientation="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="405dp">
         <LinearLayout
-            android:background="@drawable/gradientbackground"
+            android:background="@drawable/background"
             android:layout_width="match_parent"
             android:layout_height="350dp"
             android:orientation="vertical">
@@ -32,7 +33,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:text="NIKHIL GAWADE"
-                android:textColor="#fff"
+                android:textColor="@color/black"
                 android:textSize="21sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -59,6 +60,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Experience"
+                        android:textColor="@color/black"
                         android:textSize="20sp"
                         />
 
@@ -68,7 +70,7 @@
                         android:layout_height="wrap_content"
                         android:paddingTop="10dp"
                         android:text="5+ Years"
-                        android:textColor="@color/startBlue"
+                        android:textColor="@color/black"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -82,7 +84,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="FEES"
+                        android:text="Fees"
+                        android:textColor="@color/black"
                         android:textSize="20sp"
                         />
 
@@ -92,7 +95,7 @@
                         android:layout_height="wrap_content"
                         android:paddingTop="10dp"
                         android:text="Rs 500"
-                        android:textColor="@color/startBlue"
+                        android:textColor="@color/black"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -107,6 +110,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Ratings"
+                        android:textColor="@color/black"
                         android:textSize="20sp"
                         />
 
@@ -116,7 +120,7 @@
                         android:layout_height="wrap_content"
                         android:paddingTop="10dp"
                         android:text="95%"
-                        android:textColor="@color/startBlue"
+                        android:textColor="@color/black"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -234,8 +238,7 @@
             android:layout_marginTop="35dp"
             android:background="@drawable/buttonstyle"
             android:onClick="bookappointment"
-            android:text="BookAppointment"
-            android:textColor="#fff" />
+            android:text="BookAppointment" />
 
         <Button
             android:layout_width="wrap_content"
@@ -245,7 +248,6 @@
             android:background="@drawable/buttonstyle"
             android:text="Reveiws"
             android:onClick="showreveiws"
-            android:textColor="#fff"
             android:layout_margin="10dp"
             />
         <Button
@@ -256,7 +258,6 @@
             android:background="@drawable/buttonstyle"
             android:onClick="addreveiws"
             android:text="Add Reveiws"
-            android:textColor="#fff"
             />
 
 

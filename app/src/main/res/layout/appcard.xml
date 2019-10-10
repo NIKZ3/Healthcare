@@ -8,6 +8,7 @@
     android:orientation="vertical"
 
     android:layout_width="match_parent"
+    android:background="@drawable/background"
     android:layout_height="wrap_content"
     app:cardCornerRadius="5dp"
     app:cardMaxElevation="2dp"
@@ -19,6 +20,7 @@
 
     <LinearLayout
 android:layout_width="match_parent"
+
 android:layout_height="wrap_content"
 android:orientation="horizontal">
 
@@ -71,7 +73,6 @@ android:orientation="horizontal">
             android:background="@drawable/buttonstyle"
             android:onClick="cancelAppointment"
             android:text="Cancel Appointment"
-            android:textColor="#ffff"
 
             />
 

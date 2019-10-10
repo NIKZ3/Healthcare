@@ -308,11 +308,11 @@ public class patientinitial extends AppCompatActivity
             startActivity(intent);
 
         }
-        /* else if (id == R.id.nav_gallery) {
-
-
-
-        }*/
+        else if (id == R.id.nav_gallery) {
+            mAuth.getInstance().signOut();
+            Intent intent=new Intent(patientinitial.this,MainActivity.class);
+            startActivity(intent);
+        }
 
      /*   } else if (id == R.id.nav_slideshow) {
 

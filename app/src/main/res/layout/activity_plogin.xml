@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".plogin">
 
     <EditText
@@ -15,6 +16,7 @@
         android:layout_marginEnd="100dp"
         android:ems="10"
         android:hint="Password"
+        android:textColorHint="@color/black"
         android:inputType="textPassword"
         android:background="@drawable/buttonstyle"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +45,8 @@
         android:layout_marginTop="132dp"
         android:layout_marginEnd="100dp"
         android:ems="10"
-        android:hint="EMAIL"
+        android:hint="Email"
+        android:textColorHint="@color/black"
         android:background="@drawable/buttonstyle"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"

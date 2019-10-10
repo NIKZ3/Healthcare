@@ -232,8 +232,11 @@ public class dochome extends AppCompatActivity
             Intent intent4=new Intent(dochome.this,review_list.class);
             startActivity(intent4);
 
-        } else if (id == R.id.nav_tools) {
 
+        }else if (id == R.id.nav_share) {
+            firebaseAuth.getInstance().signOut();
+            Intent intent=new Intent(dochome.this,MainActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

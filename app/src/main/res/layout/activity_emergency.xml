@@ -6,13 +6,13 @@
     android:orientation="vertical"
 
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:background="@drawable/background"
+    android:layout_height="match_parent"
     app:cardCornerRadius="5dp"
     app:cardMaxElevation="2dp"
     app:cardElevation="0dp"
     app:cardUseCompatPadding="true"
     app:cardPreventCornerOverlap="false"
-    app:cardBackgroundColor="@color/cardview_shadow_end_color"
     >
 
     <LinearLayout
@@ -33,6 +33,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:paddingBottom="15dp"
+                android:textColor="@color/black"
+                android:textSize="20dp"
                 android:text="NAME" />
 
 
@@ -66,7 +68,7 @@
                     android:layout_marginLeft="73dp"
                     android:layout_marginBottom="14dp"
                     android:onClick="bookAmb"
-                    android:src="@drawable/ambulance" />
+                    android:src="@drawable/book" />
 
 
             </LinearLayout>

@@ -14,20 +14,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="NAME" />
+            android:text="NAME"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
         <TextView
             android:id="@+id/pattiming"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="Time" />
+            android:text="Time"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/patstatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="status" />
+            android:text="status"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
 
         <Button
             android:id="@+id/button7"

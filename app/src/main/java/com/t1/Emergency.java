@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.common.internal.Constants;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -37,7 +38,16 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.StorageReference;
+import com.google.maps.DirectionsApi;
+import com.google.maps.GeoApiContext;
+import com.google.maps.errors.ApiException;
+import com.google.maps.model.DirectionsLeg;
+import com.google.maps.model.DirectionsResult;
+import com.google.maps.model.DirectionsRoute;
+import com.google.maps.model.Duration;
+import com.google.maps.model.TravelMode;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -56,6 +66,7 @@ public class Emergency extends AppCompatActivity {
     LocationManager locationManager;
     LocationListener locationListener;
     LatLng userlocation;
+    private static final String API_KEY ="AIzaSyCg0693hHjd0Pl9qMR8euPqK6N5DG_9FA8";
 
     public void callAmb(View view)
     {
@@ -86,9 +97,14 @@ public class Emergency extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
 
-                                String doc_log=document.get("Longitude").toString();
-                                String doc_lat=document.get("Latitude").toString();
+                                final String doc_log=document.get("Longitude").toString();
+                                final String doc_lat=document.get("Latitude").toString();
                                 String clinic=document.get("clinicname").toString();
+                                LatLng origin=new LatLng(Double.parseDouble(doc_lat),Double.parseDouble(doc_log));
+                                LatLng dest=new LatLng(Double.parseDouble(doc_lat),Double.parseDouble(doc_log));
+
+                                final String org=origin.toString();
+                                final String dst=dest.toString();
 
                                 Map<String,Object> data_user = new HashMap<>();
                                 data_user.put("Patient Longitude",longitude);
@@ -104,7 +120,11 @@ public class Emergency extends AppCompatActivity {
                                         .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                             @Override
                                             public void onSuccess(DocumentReference documentReference) {
+                                                String time=getDurationForRoute(org,dst);
+                                                Toast.makeText(Emergency.this,"Ambulance arriving in "+time,Toast.LENGTH_LONG).show();
+
                                                 Log.i("message","success");
+
                                             }
                                         })
                                         .addOnFailureListener(new OnFailureListener() {
@@ -124,6 +144,35 @@ public class Emergency extends AppCompatActivity {
 
             }
 
+            public String getDurationForRoute(String origin, String destination)
+            {
+            // - We need a context to access the API
+            GeoApiContext geoApiContext = new GeoApiContext.Builder()
+                    .apiKey(API_KEY)
+                    .build();
+
+            // - Perform the actual request
+                DirectionsResult directionsResult = null;
+                try {
+                    directionsResult = DirectionsApi.newRequest(geoApiContext)
+                            .mode(TravelMode.DRIVING)
+                            .origin(origin)
+                            .destination(destination)
+                            .await();
+                } catch (ApiException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                // - Parse the result
+            DirectionsRoute route = directionsResult.routes[0];
+            DirectionsLeg leg = route.legs[0];
+            Duration duration = leg.duration;
+    return duration.humanReadable;
+        }
             @Override
             public void onStatusChanged(String s, int i, Bundle bundle) {
 

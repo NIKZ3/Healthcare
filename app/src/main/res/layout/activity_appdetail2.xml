@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@drawable/background"
     android:layout_height="match_parent">
 
     <TextView
@@ -11,6 +12,8 @@
         android:layout_marginTop="40dp"
         android:textAlignment="center"
         android:ems="10"
+        android:textSize="20dp"
+        android:textColor="@color/black"
         android:text="Patient Name" />
 
     <TextView
@@ -19,7 +22,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="40dp"
-        android:text="TextView" />
+        android:textSize="30dp"
+        android:textColor="@color/black"/>
 
     <EditText
         android:id="@+id/editText"
@@ -29,6 +33,7 @@
         android:ems="10"
         android:inputType="time"
         android:layout_marginTop="50dp"
+        android:textColorHint="@color/black"
         android:hint="Enter Visit Time"/>
 
     <Button
@@ -39,8 +44,7 @@
         android:layout_marginTop="40dp"
         android:background="@drawable/buttonstyle"
         android:onClick="confirm_time"
-        android:text="CONFIRM TIME"
-        android:textColor="#fff" />
+        android:text="CONFIRM TIME" />
 
     <Button
         android:id="@+id/button2"
@@ -50,8 +54,7 @@
         android:layout_marginTop="45dp"
         android:background="@drawable/buttonstyle"
         android:onClick="confirm_appointment"
-        android:text="CONFIRM APPOINTMENT"
-        android:textColor="#fff" />
+        android:text="CONFIRM APPOINTMENT" />
 
     <Button
         android:id="@+id/button3"
@@ -61,8 +64,7 @@
         android:layout_marginTop="50dp"
         android:background="@drawable/buttonstyle"
         android:onClick="decline_appointment"
-        android:text="DECLINE APPOINTMENT"
-        android:textColor="#fff" />
+        android:text="DECLINE APPOINTMENT" />
 
 
 

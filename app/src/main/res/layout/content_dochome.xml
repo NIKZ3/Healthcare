@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/background"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".dochome"
@@ -10,12 +11,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:background="@drawable/background"
         android:layout_height="match_parent">
 
 
         <RelativeLayout
             android:id="@+id/relativeLayout"
             android:layout_width="match_parent"
+            android:background="@drawable/background"
             android:layout_height="405dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +27,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
-                android:background="@drawable/gradientbackground"
+                android:background="@drawable/background"
                 android:orientation="vertical">
 
                 <ImageView
@@ -42,8 +45,8 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
                     android:text="xyz"
-                    android:textColor="#fff"
-                    android:textSize="21sp"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -53,9 +56,9 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
                     android:text="abc"
-                    android:textColor="#fff"
+                    android:textColor="@color/black"
 
-                    android:textSize="21sp"
+                    android:textSize="20dp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -83,6 +86,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Experience"
+                            android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <TextView
@@ -91,7 +95,7 @@
                             android:layout_height="wrap_content"
                             android:paddingTop="10dp"
                             android:text="2 years"
-                            android:textColor="@color/startBlue"
+                            android:textColor="@color/black"
                             android:textSize="20sp"
                             android:textStyle="bold" />
 
@@ -108,6 +112,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="FEES"
+                            android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <TextView
@@ -116,7 +121,8 @@
                             android:layout_height="wrap_content"
                             android:paddingTop="10dp"
                             android:text="500"
-                            android:textColor="@color/startBlue"
+
+                            android:textColor="@color/black"
                             android:textSize="20sp"
                             android:textStyle="bold" />
 
@@ -133,6 +139,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Ratings"
+                            android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <TextView
@@ -141,7 +148,7 @@
                             android:layout_height="wrap_content"
                             android:paddingTop="10dp"
                             android:text="100"
-                            android:textColor="@color/startBlue"
+                            android:textColor="@color/black"
                             android:textSize="20sp"
                             android:textStyle="bold" />
 
@@ -183,7 +190,7 @@
                     android:background="@drawable/buttonstyle"
                     android:onClick="check_reviews"
                     android:text="Check Reviews"
-                    android:textColor="#fff" />
+                     />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -194,7 +201,7 @@
                     android:background="@drawable/buttonstyle"
                     android:onClick="check_appointment"
                     android:text="Check Appointments"
-                    android:textColor="#fff" />
+                    />
 
             </LinearLayout>
 

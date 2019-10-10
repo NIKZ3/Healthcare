@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".plogin">
 
     <EditText
@@ -13,10 +14,13 @@
         android:layout_marginStart="98dp"
         android:layout_marginTop="153dp"
         android:layout_marginEnd="100dp"
+        android:layout_marginBottom="92dp"
         android:background="@drawable/buttonstyle"
         android:ems="10"
         android:hint="Password"
+        android:textColorHint="@color/black"
         android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lemail" />
@@ -26,12 +30,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="162dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="161dp"
         android:layout_marginBottom="197dp"
         android:background="@drawable/buttonstyle"
         android:onClick="d_login"
-        android:text="Login"
+        android:text="LOGIN"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,8 +50,9 @@
         android:layout_marginEnd="100dp"
         android:background="@drawable/buttonstyle"
         android:ems="10"
-        android:hint="EMAIL"
+        android:hint="Email"
         android:inputType="textPersonName"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
