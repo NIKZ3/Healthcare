@@ -23,8 +23,9 @@ public class StepCounter extends AppCompatActivity implements SensorEventListene
     private TextView TvSteps,calorie;
     private Button BtnStart,BtnStop;
     private EditText age,ht,wt;
-    private double bmi,height,weight,age1,calburn;
-
+    private double bmi,height,calburn,weight;
+    private int age1;
+    String h1,w1,a1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +47,7 @@ public class StepCounter extends AppCompatActivity implements SensorEventListene
         wt=(EditText)findViewById(R.id.wt);
         calorie=(TextView) findViewById(R.id.cal);
 
-        //height=Double.parseDouble(ht.getText().toString());
-        //weight=Double.parseDouble(wt.getText().toString());
-        //age1=Double.parseDouble(age.getText().toString());
+
 
         //bmi=weight/(height*height);
 
@@ -71,7 +70,17 @@ public class StepCounter extends AppCompatActivity implements SensorEventListene
             @Override
             public void onClick(View arg0) {
 
-
+                h1=ht.getText().toString();
+                w1=wt.getText().toString();
+                a1=age.getText().toString();
+                height=Double.parseDouble(h1);
+                weight=Double.parseDouble(w1);
+                age1=Integer.parseInt(a1);
+                height=height*39.37;
+                weight=weight*2.205;
+                bmi=weight/(height*height);
+                calburn=numSteps*0.04*bmi*age1*3;
+                calorie.setText("Congratulations!! You have burnt "+String.valueOf(calburn)+" calories");
                 sensorManager.unregisterListener(StepCounter.this);
 
             }

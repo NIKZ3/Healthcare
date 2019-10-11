@@ -17,7 +17,7 @@
         <activity android:name=".docgetdetails" />
         <activity
             android:name=".dochome"
-            android:label="@string/title_activity_dochome"
+            android:label="Medically YOURS"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".d_activity" />
         <activity android:name=".doc_register" />
@@ -44,7 +44,7 @@
         <activity android:name=".plogin" />
         <activity
             android:name=".patientinitial"
-            android:label="@string/title_activity_patientinitial"
+            android:label="Medically YOURS"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".pregister_activity" />
         <activity android:name=".p_activity" />

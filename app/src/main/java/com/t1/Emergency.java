@@ -68,14 +68,11 @@ public class Emergency extends AppCompatActivity {
     LatLng userlocation;
     private static final String API_KEY ="AIzaSyCg0693hHjd0Pl9qMR8euPqK6N5DG_9FA8";
 
-    public void callAmb(View view)
-    {
-        makePhoneCall();
-    }
 
 
 
-    public void bookAmb(View view)
+
+    /*public void bookAmb(View view)
     {
         mref=db.collection("doctors");
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
@@ -204,7 +201,7 @@ public class Emergency extends AppCompatActivity {
 
     }
 
-
+*/
     //Finishes activity on back key pressed
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -222,6 +219,7 @@ public class Emergency extends AppCompatActivity {
         setContentView(R.layout.amblist);
 
         intent = getIntent();
+        final Context mcontext = this;
 
         //Setting Up Recycler View and the adapter
         db = FirebaseFirestore.getInstance();
@@ -240,7 +238,10 @@ public class Emergency extends AppCompatActivity {
                 {
                     for(QueryDocumentSnapshot document : task.getResult())
                     {
-                        amb_list.add(new ambmodel(document.get("name").toString()));
+                        amb_list.add(new ambmodel(document.get("name").toString(),document.get("phone no").toString(),mcontext));
+
+
+
 
                     }
 
@@ -262,7 +263,7 @@ public class Emergency extends AppCompatActivity {
 
     }
 
-    public void makePhoneCall()
+  /*  public void makePhoneCall()
     {
         mref=db.collection("doctors");
 
@@ -311,7 +312,7 @@ public class Emergency extends AppCompatActivity {
 
             }
         }
-    }
+    }*/
 
 
 
