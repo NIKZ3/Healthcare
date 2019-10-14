@@ -40,6 +40,13 @@ android:orientation="horizontal">
         android:text="NAME" />
 
 
+    <TextView
+        android:id="@+id/appdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:paddingBottom="15dp"
+        android:text="Visit date" />
 
 
     <TextView
@@ -49,6 +56,8 @@ android:orientation="horizontal">
         android:layout_weight="2"
         android:paddingBottom="15dp"
         android:text="Description" />
+
+
     <TextView
         android:id="@+id/appstatus"
         android:layout_width="match_parent"

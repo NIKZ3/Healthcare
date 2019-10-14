@@ -70,12 +70,14 @@ public class app_adapter extends RecyclerView.Adapter<app_adapter.ViewHolder>{
 
         TextView pname = holder.pname;
         TextView timing = holder.timing;
+        TextView date1=holder.date;
         TextView status = holder.status;
         Button complete=holder.comp_treat;
 
-        pname.setText("Patient Name"+appitem.getpname());
-        timing.setText("Reporting Timing"+appitem.gettiming());
-        status.setText("Status"+appitem.getstatus());
+        pname.setText("Patient Name: "+appitem.getpname());
+        timing.setText("Reporting Timing: "+appitem.gettiming());
+        date1.setText("Reporting date: "+appitem.getdate());
+        status.setText("Status: "+appitem.getstatus());
 
         status1=appitem.getstatus();
         if(status1.equals("confirmed"))
@@ -150,7 +152,7 @@ public class app_adapter extends RecyclerView.Adapter<app_adapter.ViewHolder>{
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView pname,timing,status;
+        TextView pname,timing,status,date;
         Button comp_treat;
 
         public ViewHolder(@NonNull View itemView) {
@@ -159,6 +161,7 @@ public class app_adapter extends RecyclerView.Adapter<app_adapter.ViewHolder>{
 
             pname = itemView.findViewById(R.id.patname);
             timing = itemView.findViewById(R.id.pattiming);
+            date=itemView.findViewById(R.id.patdate);
             status = itemView.findViewById(R.id.patstatus);
             comp_treat=itemView.findViewById(R.id.button7);
             comp_treat.setVisibility(View.INVISIBLE);

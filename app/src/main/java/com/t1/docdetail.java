@@ -102,6 +102,7 @@ public class docdetail extends AppCompatActivity {
                         appointmentData.put("completed","false");
 
                         appointmentData.put("Timing","Specifed by doctor");
+                        appointmentData.put("Visit date","Specified by doctor");
 
                         appointmentData.put("docref",id);
 
@@ -180,6 +181,7 @@ public class docdetail extends AppCompatActivity {
         appointmentData1.put("completed","false");
 
         appointmentData1.put("Timing","Specifed by doctor");
+        appointmentData1.put("Visit date","Specified by doctor");
 
 
         //Here im storing docref of same document so that it is easier to add data change listener

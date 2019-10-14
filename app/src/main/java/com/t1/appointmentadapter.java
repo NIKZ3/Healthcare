@@ -62,11 +62,14 @@ public class appointmentadapter extends RecyclerView.Adapter<appointmentadapter.
         TextView name1 = holder.item_name;
         TextView description1 = holder.item_description;
         TextView status1 = holder.item_status;
+        TextView date1 = holder.item_date;
+
         Button cancel_button = holder.item_button;
 
 
         name1.setText("NAME : " + appointment.getName());
         description1.setText("TIMING : " + appointment.getDescription());
+        date1.setText("DATE: "+appointment.getDate());
 
         status = appointment.getStatus();
 
@@ -156,7 +159,7 @@ public class appointmentadapter extends RecyclerView.Adapter<appointmentadapter.
 
 
 
-        TextView  item_name,item_description,item_status;
+        TextView  item_name,item_description,item_status,item_date;
         Button item_button;
 
         public ViewHolder(@NonNull View itemView) {
@@ -166,6 +169,7 @@ public class appointmentadapter extends RecyclerView.Adapter<appointmentadapter.
             item_button = itemView.findViewById(R.id.cancel_button);
             item_name = itemView.findViewById(R.id.appname);
             item_description = itemView.findViewById(R.id.appdesc);
+            item_date=itemView.findViewById(R.id.appdate);
             item_status = itemView.findViewById(R.id.appstatus);
         }
     }

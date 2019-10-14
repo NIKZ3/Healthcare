@@ -34,14 +34,15 @@ public class appdetail extends AppCompatActivity {
     private CollectionReference mref, mref1;
     FirebaseAuth firebaseAuth;
     Intent intent;
-    String time;
+    String time,date1;
     public String documentid,pat_doc,patid;
-    public EditText timing;
+    public EditText timing,date;
     public Button confirm_time,confirm_app;
 
     public void confirm_appointment(View view) {
         timing.setVisibility(View.VISIBLE);
         confirm_time.setVisibility(View.VISIBLE);
+        date.setVisibility(View.VISIBLE);
         mref1=db.collection("patients").document(patid).collection("appointment");
         mref.document(documentid).update("status","confirmed","completed","false").addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -108,10 +109,11 @@ public class appdetail extends AppCompatActivity {
 
 
         time=timing.getText().toString();
+        date1=date.getText().toString();
 
         mref1=db.collection("patients").document(patid).collection("appointment");
 
-        mref.document(documentid).update("Timing",time).addOnCompleteListener(new OnCompleteListener<Void>() {
+        mref.document(documentid).update("Timing",time,"Visit date",date1).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful())
@@ -128,7 +130,7 @@ public class appdetail extends AppCompatActivity {
             }
         });
 
-        mref1.document(pat_doc).update("Timing",time).addOnCompleteListener(new OnCompleteListener<Void>() {
+        mref1.document(pat_doc).update("Timing",time,"Visit date",date1).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful())
@@ -183,9 +185,11 @@ public class appdetail extends AppCompatActivity {
         });
 
         timing=(EditText) findViewById(R.id.editText);
+        date=(EditText)findViewById(R.id.visitdate);
         confirm_time=(Button)findViewById(R.id.button6);
         confirm_app=(Button)findViewById(R.id.button2);
         timing.setVisibility(View.INVISIBLE);
+        date.setVisibility(View.INVISIBLE);
         confirm_time.setVisibility(View.INVISIBLE);
 
 

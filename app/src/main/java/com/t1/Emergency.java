@@ -66,7 +66,7 @@ public class Emergency extends AppCompatActivity {
     LocationManager locationManager;
     LocationListener locationListener;
     LatLng userlocation;
-    private static final String API_KEY ="AIzaSyCg0693hHjd0Pl9qMR8euPqK6N5DG_9FA8";
+   // private static final String API_KEY ="AIzaSyCg0693hHjd0Pl9qMR8euPqK6N5DG_9FA8";
 
 
 

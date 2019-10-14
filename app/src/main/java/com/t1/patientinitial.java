@@ -76,7 +76,7 @@ public class patientinitial extends AppCompatActivity
         if(status.equals("confirmed")) {
             notificationManager = NotificationManagerCompat.from(patientinitial.this);
             Notification notification = new NotificationCompat.Builder(patientinitial.this, CHANNEL_1_ID).setSmallIcon(R.drawable.ic_menu_camera)
-                    .setContentTitle("Appointment").setContentText( docname + "Confirmed").setPriority(NotificationCompat.PRIORITY_HIGH)
+                    .setContentTitle("Appointment").setContentText( docname + " confirmed your appointment").setPriority(NotificationCompat.PRIORITY_HIGH)
                     .setCategory(NotificationCompat.CATEGORY_MESSAGE).build();
             notificationManager.notify(1, notification);
         }
@@ -84,7 +84,7 @@ public class patientinitial extends AppCompatActivity
         else if(status.equals("denied")) {
             notificationManager = NotificationManagerCompat.from(patientinitial.this);
             Notification notification = new NotificationCompat.Builder(patientinitial.this, CHANNEL_1_ID).setSmallIcon(R.drawable.ic_menu_camera)
-                    .setContentTitle("Appointment").setContentText(docname + "declined").setPriority(NotificationCompat.PRIORITY_HIGH)
+                    .setContentTitle("Appointment").setContentText(docname + " declined your appointment").setPriority(NotificationCompat.PRIORITY_HIGH)
                     .setCategory(NotificationCompat.CATEGORY_MESSAGE).build();
             notificationManager.notify(1, notification);
         }
@@ -93,7 +93,7 @@ public class patientinitial extends AppCompatActivity
         {
             notificationManager = NotificationManagerCompat.from(patientinitial.this);
             Notification notification = new NotificationCompat.Builder(patientinitial.this, CHANNEL_1_ID).setSmallIcon(R.drawable.ic_menu_camera)
-                    .setContentTitle("Appointment").setContentText(docname + "Cancelled").setPriority(NotificationCompat.PRIORITY_HIGH)
+                    .setContentTitle("Appointment").setContentText(docname + " cancelled your appointment").setPriority(NotificationCompat.PRIORITY_HIGH)
                     .setCategory(NotificationCompat.CATEGORY_MESSAGE).build();
             notificationManager.notify(1, notification);
         }

@@ -106,7 +106,7 @@ public class dochome extends AppCompatActivity
                     if(document.exists())
                     {
                         doc_name.setText(document.get("name").toString());
-                        doc_fees.setText(document.get("consultationfees").toString());
+                        doc_fees.setText("Rs "+document.get("consultationfees").toString());
                         doc_xp.setText(document.get("xp").toString()+" years");
                         //doc_type.setText(document.get("Type").toString());
                         if(document.get("Type").toString().equals("gyno"))

@@ -70,6 +70,7 @@ public class app_list extends AppCompatActivity {
                     {
                         if(!document.get("status").equals("cancel")) {
                             applist.add(new appmodel(document.get("patientname").toString(),
+                                    document.get("Visit date").toString(),
                                     document.get("Timing").toString(),
                                     document.get("status").toString(),
                                     document.getId().toString()

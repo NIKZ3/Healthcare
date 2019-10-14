@@ -26,6 +26,17 @@
         android:textColor="@color/black"/>
 
     <EditText
+        android:id="@+id/visitdate"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="date"
+        android:layout_marginTop="50dp"
+        android:textColorHint="@color/black"
+        android:hint="Enter Visit Date"/>
+
+    <EditText
         android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -44,7 +55,7 @@
         android:layout_marginTop="40dp"
         android:background="@drawable/buttonstyle"
         android:onClick="confirm_time"
-        android:text="CONFIRM TIME" />
+        android:text="CONFIRM DATE AND TIME" />
 
     <Button
         android:id="@+id/button2"

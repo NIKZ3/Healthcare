@@ -58,7 +58,7 @@ public class rev_adapter extends RecyclerView.Adapter<rev_adapter.ViewHolder>{
 
 
         review.setText("Review: "+appitem.getreview());
-        rating.setText("Rating"+appitem.getrating());
+        rating.setText("Rating: "+appitem.getrating());
 
 
     }
