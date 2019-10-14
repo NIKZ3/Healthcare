@@ -58,7 +58,7 @@ public class appointmentadapter extends RecyclerView.Adapter<appointmentadapter.
 
         final Modelappointment appointment = mlist.get(position);
 
-
+        TextView date = holder.item_date;
         TextView name1 = holder.item_name;
         TextView description1 = holder.item_description;
         TextView status1 = holder.item_status;
@@ -67,6 +67,7 @@ public class appointmentadapter extends RecyclerView.Adapter<appointmentadapter.
 
         name1.setText("NAME : " + appointment.getName());
         description1.setText("TIMING : " + appointment.getDescription());
+        date.setText("Date : " + appointment.getdate());
 
         status = appointment.getStatus();
 
@@ -156,13 +157,13 @@ public class appointmentadapter extends RecyclerView.Adapter<appointmentadapter.
 
 
 
-        TextView  item_name,item_description,item_status;
+        TextView  item_name,item_description,item_status,item_date;
         Button item_button;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-
+            item_date = itemView.findViewById(R.id.appdate);
             item_button = itemView.findViewById(R.id.cancel_button);
             item_name = itemView.findViewById(R.id.appname);
             item_description = itemView.findViewById(R.id.appdesc);

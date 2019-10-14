@@ -72,6 +72,7 @@ public class app_list extends AppCompatActivity {
                             applist.add(new appmodel(document.get("patientname").toString(),
                                     document.get("Timing").toString(),
                                     document.get("status").toString(),
+                                    document.get("date").toString(),
                                     document.getId().toString()
                             ));
                         }

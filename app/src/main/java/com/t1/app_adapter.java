@@ -69,13 +69,16 @@ public class app_adapter extends RecyclerView.Adapter<app_adapter.ViewHolder>{
         final appmodel appitem=mlist.get(position);
 
         TextView pname = holder.pname;
+        TextView pdate = holder.pdate;
         TextView timing = holder.timing;
         TextView status = holder.status;
         Button complete=holder.comp_treat;
 
-        pname.setText("Patient Name"+appitem.getpname());
-        timing.setText("Reporting Timing"+appitem.gettiming());
-        status.setText("Status"+appitem.getstatus());
+
+        pdate.setText("DATE:"+appitem.getdate());
+        pname.setText("Patient Name:"+appitem.getpname());
+        timing.setText("Reporting Timing:"+appitem.gettiming());
+        status.setText("Status:"+appitem.getstatus());
 
         status1=appitem.getstatus();
         if(status1.equals("confirmed"))
@@ -150,13 +153,13 @@ public class app_adapter extends RecyclerView.Adapter<app_adapter.ViewHolder>{
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView pname,timing,status;
+        TextView pname,timing,status,pdate;
         Button comp_treat;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-
+            pdate = itemView.findViewById(R.id.patdate);
             pname = itemView.findViewById(R.id.patname);
             timing = itemView.findViewById(R.id.pattiming);
             status = itemView.findViewById(R.id.patstatus);

@@ -1,15 +1,25 @@
 package com.t1;
 
 public class appmodel {
-    private String pname,timing,status,id;
+    private String pname,timing,status,id,date;
 
-    public appmodel(String patname,String time,String app_status,String id)
+    public appmodel(String patname,String time,String app_status,String date,String id)
     {
         this.pname=patname;
         this.timing=time;
         this.status=app_status;
         this.id=id;
+        this.date=date;
     }
+
+    public String getdate() {
+        return date;
+    }
+
+    public void setdate(String date) {
+        this.date = date;
+    }
+
     public String getpname() {
         return pname;
     }

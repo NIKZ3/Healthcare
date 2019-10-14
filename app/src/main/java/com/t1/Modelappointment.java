@@ -2,16 +2,26 @@ package com.t1;
 
 public class Modelappointment {
 
-    String name,description,id,doctoruid,doctordocument,status;
+    String name,description,id,doctoruid,doctordocument,status,date;
 
 
-    public Modelappointment(String name, String description,String id,String doctoruid,String doctordocument,String status) {
+    public Modelappointment(String name, String description,String date,String id,String doctoruid,String doctordocument,String status) {
         this.name = name;
+        this.date = date;
         this.description = description;
         this.id = id;
         this.doctoruid = doctoruid;
         this.doctordocument = doctordocument;
         this.status = status;
+    }
+
+
+    public String getdate() {
+        return date;
+    }
+
+    public void setdate(String date) {
+        this.date = date;
     }
 
     public String getStatus() { return status; }

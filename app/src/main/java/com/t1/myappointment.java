@@ -66,9 +66,13 @@ public class myappointment extends AppCompatActivity {
                     {
                         //Document goes into adapter only if it is incomplete and not cancelled
                         if(document.get("completed").equals("false") && !document.get("status").equals("cancel")) {
-                            Modelappointment m1 = new Modelappointment(document.get("docname").toString(),
-                                    document.get("Timing").toString(), document.getId().toString(),
-                                    document.get("doctoruid").toString(), document.get("doctordocument").toString(),
+                            Modelappointment m1 = new Modelappointment(
+                                    document.get("docname").toString(),
+                                    document.get("Timing").toString(),
+                                    document.get("date").toString(),
+                                    document.getId().toString(),
+                                    document.get("doctoruid").toString(),
+                                    document.get("doctordocument").toString(),
                                     document.get("status").toString());
                             appointment.add(m1);
                         }

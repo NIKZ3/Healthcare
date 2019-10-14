@@ -28,15 +28,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class appdetail extends AppCompatActivity {
 
     FirebaseFirestore db;
     private CollectionReference mref, mref1;
     FirebaseAuth firebaseAuth;
     Intent intent;
-    String time;
+    String time,date1;
     public String documentid,pat_doc,patid;
-    public EditText timing;
+    public EditText timing,date2;
     public Button confirm_time,confirm_app;
 
     public void confirm_appointment(View view) {
@@ -108,10 +111,17 @@ public class appdetail extends AppCompatActivity {
 
 
         time=timing.getText().toString();
+        date1 = date2.getText().toString();
 
         mref1=db.collection("patients").document(patid).collection("appointment");
 
-        mref.document(documentid).update("Timing",time).addOnCompleteListener(new OnCompleteListener<Void>() {
+        Map<String, Object> data = new HashMap<>();
+        data.put("Timing", time);
+        data.put("date", date1);
+
+
+
+        mref.document(documentid).update(data).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful())
@@ -183,6 +193,7 @@ public class appdetail extends AppCompatActivity {
         });
 
         timing=(EditText) findViewById(R.id.editText);
+        date2=(EditText) findViewById(R.id.date);
         confirm_time=(Button)findViewById(R.id.button6);
         confirm_app=(Button)findViewById(R.id.button2);
         timing.setVisibility(View.INVISIBLE);
