@@ -61,7 +61,7 @@ public class amb_adapter extends RecyclerView.Adapter<amb_adapter.ViewHolder> {
     LocationListener locationListener;
     LatLng userlocation;
     String latitude,longitude;
-   // private static final String API_KEY ="AIzaSyCg0693hHjd0Pl9qMR8euPqK6N5DG_9FA8";
+
 
 
 
@@ -172,7 +172,7 @@ public class amb_adapter extends RecyclerView.Adapter<amb_adapter.ViewHolder> {
                 locationListener =new LocationListener() {
                     @Override
                     public void onLocationChanged(Location location) {
-
+android-studio
                         locationManager.removeUpdates(locationListener);
 
                         userlocation = new LatLng(location.getLatitude(),location.getLongitude());
